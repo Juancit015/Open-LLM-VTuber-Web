@@ -1,10 +1,10 @@
 {
   "common": {
-    "save": "Save",
-    "cancel": "Cancel",
-    "settings": "Settings",
-    "close": "Close",
-    "accept": "Accept"
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "settings": "Ajustes",
+    "close": "Cerrar",
+    "accept": "Aceptar"
   },
   "settings": {
     "tabs": {
@@ -12,128 +12,128 @@
       "live2d": "Live2D",
       "asr": "ASR",
       "tts": "TTS",
-      "agent": "Agent",
-      "about": "About"
+      "agent": "Agente",
+      "about": "Acerca de"
     },
     "general": {
-      "language": "Language",
-      "useCameraBackground": "Use Camera Background",
-      "showSubtitle": "Show Subtitle",
-      "backgroundImage": "Background Image",
-      "customBgUrlPlaceholder": "Enter image URL",
-      "customBgUrl": "Or enter a custom background URL",
-      "characterPreset": "Character Preset",
-      "wsUrl": "WebSocket URL",
-      "baseUrl": "Base URL",
-      "imageCompressionQuality": "Image Compression Quality",
-      "imageCompressionQualityPlaceholder": "Enter compression quality (0-100)",
-      "imageCompressionQualityHelp": "JPEG compression quality (0.1-1.0). Default is 0.8 to reduce file size when transmitting images to AI models, as we don't compress images during API transmission which could result in large file sizes.",
-      "imageMaxWidth": "Image Max Width",
-      "imageMaxWidthPlaceholder": "Enter maximum width in pixels",
-      "imageMaxWidthHelp": "Maximum width for image resizing. Images exceeding this width will be proportionally scaled down. Set to 0 for no size limit. This feature exists because some AI models may have limitations when processing very large images. However, most AI models can handle images automatically, so the default is 0 (no restriction) to preserve your original images."
+      "language": "Idioma",
+      "useCameraBackground": "Usar fondo de cámara",
+      "showSubtitle": "Mostrar subtítulos",
+      "backgroundImage": "Imagen de fondo",
+      "customBgUrlPlaceholder": "Introduce la URL de la imagen",
+      "customBgUrl": "O introduce una URL de fondo personalizada",
+      "characterPreset": "Personaje",
+      "wsUrl": "URL WebSocket",
+      "baseUrl": "URL base",
+      "imageCompressionQuality": "Calidad de compresión de imagen",
+      "imageCompressionQualityPlaceholder": "Introduce la calidad de compresión (0-100)",
+      "imageCompressionQualityHelp": "Calidad de compresión JPEG (0.1-1.0). Por defecto es 0.8 para reducir el tamaño al enviar imágenes a modelos de IA, ya que no comprimimos durante la transmisión y los archivos podrían ser muy grandes.",
+      "imageMaxWidth": "Ancho máximo de imagen",
+      "imageMaxWidthPlaceholder": "Introduce el ancho máximo en píxeles",
+      "imageMaxWidthHelp": "Ancho máximo para redimensionar imágenes. Las imágenes que superen este ancho se escalarán proporcionalmente. Establece 0 para sin límite. Esta opción existe porque algunos modelos de IA tienen limitaciones con imágenes muy grandes, pero la mayoría las gestiona automáticamente, así que el valor por defecto es 0 (sin restricción)."
     },
     "live2d": {
-      "pointerInteractive": "Pointer Interactive",
-      "scrollToResize": "Enable Scroll to Resize"
+      "pointerInteractive": "Puntero interactivo",
+      "scrollToResize": "Permitir redimensionar con la rueda"
     },
     "asr": {
-      "autoStopMic": "Auto Stop Mic When AI Start Speaking",
-      "autoStopMicDesc": "Automatically stops microphone when AI begins speaking to prevent audio feedback",
-      "autoStartMicOnConvEnd": "Auto Start Mic When Conversation End",
-      "autoStartMicOnConvEndDesc": "Automatically restarts microphone when AI finishes speaking for seamless conversation",
-      "autoStartMicOn": "Auto Start Mic When AI Interrupted",
-      "autoStartMicOnDesc": "Automatically restarts microphone when you interrupt AI for continuous interaction",
-      "positiveSpeechThreshold": "Speech Prob Threshold",
-      "positiveSpeechThresholdDesc": "Minimum confidence level (1-100) required to detect speech. Higher values reduce false positives",
-      "negativeSpeechThreshold": "Negative Speech Threshold",
-      "negativeSpeechThresholdDesc": "Confidence level (0-100) below which speech detection stops. Lower values make detection less sensitive",
-      "redemptionFrames": "Redemption Frames",
-      "redemptionFramesDesc": "Number of consecutive frames (1-100) needed to confirm speech detection. Higher values reduce noise triggers"
+      "autoStopMic": "Detener el micrófono al hablar la IA",
+      "autoStopMicDesc": "Detiene el micrófono automáticamente cuando la IA comienza a hablar para evitar retroalimentación de audio",
+      "autoStartMicOnConvEnd": "Reiniciar el micrófono al terminar la conversación",
+      "autoStartMicOnConvEndDesc": "Reinicia el micrófono automáticamente cuando la IA termina de hablar para una conversación fluida",
+      "autoStartMicOn": "Reiniciar el micrófono al interrumpir la IA",
+      "autoStartMicOnDesc": "Reinicia el micrófono automáticamente al interrumpir a la IA para una interacción continua",
+      "positiveSpeechThreshold": "Umbral de detección de voz",
+      "positiveSpeechThresholdDesc": "Nivel mínimo de confianza (1-100) necesario para detectar voz. Valores más altos reducen falsos positivos",
+      "negativeSpeechThreshold": "Umbral negativo de voz",
+      "negativeSpeechThresholdDesc": "Nivel de confianza (0-100) por debajo del cual se detiene la detección de voz. Valores más bajos hacen menos sensible la detección",
+      "redemptionFrames": "Tramas de confirmación",
+      "redemptionFramesDesc": "Número de tramas consecutivas (1-100) necesarias para confirmar la detección de voz. Valores más altos reducen los disparos por ruido"
     },
     "agent": {
-      "allowProactiveSpeak": "Allow AI to Speak Proactively",
-      "idleSecondsToSpeak": "Idle seconds allow AI to speak",
-      "allowButtonTrigger": "Prompt AI to Speak via Raise Hand Button"
+      "allowProactiveSpeak": "Permitir que la IA hable por iniciativa propia",
+      "idleSecondsToSpeak": "Segundos en reposo para que la IA hable",
+      "allowButtonTrigger": "Pedir a la IA que hable con el botón de levantar la mano"
     },
     "about": {
-      "title": "Open LLM VTuber Frontend",
-      "version": "Version",
-      "projectLinks": "Project Links",
+      "title": "Interfaz de Open LLM VTuber",
+      "version": "Versión",
+      "projectLinks": "Enlaces del proyecto",
       "github": "GitHub",
-      "documentation": "Documentation",
-      "license": "License",
+      "documentation": "Documentación",
+      "license": "Licencia",
       "copyright": "Copyright",
-      "viewLicense": "View License"
+      "viewLicense": "Ver licencia"
     }
   },
   "footer": {
-    "typeYourMessage": "Type your message...",
-    "cameraControl": "Click to start camera",
-    "cameraStopping": "Click to stop camera",
-    "screenControl": "Click to start screen capture",
-    "screenStopping": "Click to stop screen capture"
+    "typeYourMessage": "Escribe tu mensaje...",
+    "cameraControl": "Clic para iniciar la cámara",
+    "cameraStopping": "Clic para detener la cámara",
+    "screenControl": "Clic para iniciar la captura de pantalla",
+    "screenStopping": "Clic para detener la captura de pantalla"
   },
   "sidebar": {
-    "camera": "Camera",
-    "screen": "Screen",
-    "browser": "Browser",
-    "live": "Live",
-    "noMessages": "No messages yet. Start a conversation!",
-    "noBrowserSession": "No active browser session",
-    "browserSession": "Browser Session"
+    "camera": "Cámara",
+    "screen": "Pantalla",
+    "browser": "Navegador",
+    "live": "En vivo",
+    "noMessages": "Aún no hay mensajes. ¡Inicia una conversación!",
+    "noBrowserSession": "No hay sesión de navegador activa",
+    "browserSession": "Sesión de navegador"
   },
   "group": {
-    "management": "Group Management",
-    "yourUuid": "Your UUID",
-    "inviteMember": "Invite Member",
-    "enterMemberUuid": "Enter member UUID",
-    "invite": "Invite",
-    "members": "Members",
-    "you": "You",
-    "leaveGroup": "Leave Group",
-    "removeMember": "Remove Member",
-    "leave": "Leave"
+    "management": "Gestión del grupo",
+    "yourUuid": "Tu UUID",
+    "inviteMember": "Invitar miembro",
+    "enterMemberUuid": "Introduce el UUID del miembro",
+    "invite": "Invitar",
+    "members": "Miembros",
+    "you": "Tú",
+    "leaveGroup": "Salir del grupo",
+    "removeMember": "Eliminar miembro",
+    "leave": "Salir"
   },
   "history": {
-    "chatHistoryList": "Chat History List",
-    "noMessages": "No messages"
+    "chatHistoryList": "Historial de chat",
+    "noMessages": "No hay mensajes"
   },
   "notification": {
-    "characterLoaded": "New Character Loaded",
-    "characterSwitched": "Character switched",
-    "historyLoaded": "History loaded",
-    "newConversation": "New Conversation Started",
-    "newChatHistory": "New chat history created",
-    "historyDeleteSuccess": "History deleted successfully",
-    "historyDeleteFail": "Failed to delete history"
+    "characterLoaded": "Nuevo personaje cargado",
+    "characterSwitched": "Personaje cambiado",
+    "historyLoaded": "Historial cargado",
+    "newConversation": "Nueva conversación iniciada",
+    "newChatHistory": "Historial nuevo creado",
+    "historyDeleteSuccess": "Historial eliminado correctamente",
+    "historyDeleteFail": "No se pudo eliminar el historial"
   },
   "error": {
-    "cameraApiNotSupported": "Camera API is not supported on this device",
-    "noCameraFound": "No camera found on this device",
-    "failedStartCamera": "Failed to start camera",
-    "failedStartBackgroundCamera": "Failed to start background camera",
-    "failedStartScreenCapture": "Failed to start screen capture",
-    "failedStartVAD": "Failed to start VAD",
-    "llmCantHear": "The LLM can't hear you.",
-    "audioPlayback": "Audio playback error",
-    "enterValidUuid": "Please enter a valid UUID",
-    "cannotDeleteCurrentHistory": "Cannot delete current chat history",
-    "failedCapture": "Failed to capture {{source}} frame",
-    "failedParseWebSocket": "Failed to parse WebSocket message",
-    "websocketNotOpen": "WebSocket is not open.",
-    "vadMisfire": "Voice detected but too brief. Try speaking louder/longer, or adjust settings (lower speech threshold, lower negative threshold, reduce redemption frames)."
+    "cameraApiNotSupported": "La API de cámara no es compatible con este dispositivo",
+    "noCameraFound": "No se encontró cámara en este dispositivo",
+    "failedStartCamera": "No se pudo iniciar la cámara",
+    "failedStartBackgroundCamera": "No se pudo iniciar la cámara de fondo",
+    "failedStartScreenCapture": "No se pudo iniciar la captura de pantalla",
+    "failedStartVAD": "No se pudo iniciar la detección de voz",
+    "llmCantHear": "La IA no puede escucharte.",
+    "audioPlayback": "Error de reproducción de audio",
+    "enterValidUuid": "Introduce un UUID válido",
+    "cannotDeleteCurrentHistory": "No se puede eliminar el historial de chat actual",
+    "failedCapture": "No se pudo capturar la imagen de {{source}}",
+    "failedParseWebSocket": "No se pudo analizar el mensaje WebSocket",
+    "websocketNotOpen": "El WebSocket no está abierto.",
+    "vadMisfire": "Se detectó voz pero fue demasiado breve. Intenta hablar más alto o más tiempo, o ajusta los ajustes (baja el umbral de voz, baja el umbral negativo, reduce las tramas de confirmación)."
   },
   "aiState": {
-    "idle": "idle",
-    "thinking-speaking": "thinking/speaking",
-    "interrupted": "interrupted",
-    "loading": "loading",
-    "listening": "listening",
-    "waiting": "waiting"
+    "idle": "inactivo",
+    "thinking-speaking": "pensando/hablando",
+    "interrupted": "interrumpido",
+    "loading": "cargando",
+    "listening": "escuchando",
+    "waiting": "esperando"
   },
   "wsStatus": {
-    "connected": "Connected",
-    "connecting": "Connecting",
-    "clickToReconnect": "Click to Reconnect"
+    "connected": "Conectado",
+    "connecting": "Conectando",
+    "clickToReconnect": "Clic para reconectar"
   }
-} 
+}

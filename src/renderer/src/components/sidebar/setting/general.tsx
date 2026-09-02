@@ -18,13 +18,6 @@ const useCollections = () => {
   const { backgroundFiles } = useBgUrl() || {};
   const { configFiles } = useConfig();
 
-  const languages = createListCollection({
-    items: [
-      { label: "English", value: "en" },
-      { label: "中文", value: "zh" },
-    ],
-  });
-
   const backgrounds = createListCollection({
     items:
       backgroundFiles?.map((filename) => ({
@@ -41,14 +34,13 @@ const useCollections = () => {
   });
 
   return {
-    languages,
     backgrounds,
     characterPresets,
   };
 };
 
 function General({ onSave, onCancel }: GeneralProps): JSX.Element {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const bgUrlContext = useBgUrl();
   const { confName, setConfName } = useConfig();
   const { wsUrl, setWsUrl, baseUrl, setBaseUrl } = useWebSocket();
@@ -73,20 +65,8 @@ function General({ onSave, onCancel }: GeneralProps): JSX.Element {
     onCancel,
   });
 
-  if (settings.language[0] !== i18n.language) {
-    handleSettingChange("language", [i18n.language]);
-  }
-
   return (
     <Stack {...settingStyles.common.container}>
-      <SelectField
-        label={t("settings.general.language")}
-        value={settings.language}
-        onChange={(value) => handleSettingChange("language", value)}
-        collection={collections.languages}
-        placeholder={t("settings.general.language")}
-      />
-
       <SwitchField
         label={t("settings.general.useCameraBackground")}
         checked={settings.useCameraBackground}
