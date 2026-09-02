@@ -374,7 +374,7 @@ export function VADProvider({ children }: { children: React.ReactNode }) {
         isMutedForTTSRef.current = true;
       }
     } else if (aiState === 'idle' && isMutedForTTSRef.current) {
-      const shouldResume = wasMicOnBeforeTTSRef.current && autoStartMicOnConvEndRef.current;
+      const shouldResume = wasMicOnBeforeTTSRef.current; // siempre vuelve si estaba prendido antes, ignora autoStartMicOnConvEnd para corregir 'no se reactiva'
       console.log('[mic-mute] Audio finished, wasMicOn:', wasMicOnBeforeTTSRef.current, 'autoStartMicOnConvEnd:', autoStartMicOnConvEndRef.current, 'shouldResume:', shouldResume);
       isMutedForTTSRef.current = false;
       if (shouldResume) {
