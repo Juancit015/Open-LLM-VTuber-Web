@@ -183,32 +183,9 @@ export function VADProvider({ children }: { children: React.ReactNode }) {
     autoStartMicOnConvEndRef.current = autoStartMicOnConvEnd;
   }, []);
 
-  // Mute mic/VAD while avatar speaks (aiState thinking-speaking) — guarda estado previo
-  // Cubre toda la cola de audios (no reactiva entre audios intermedios), solo al volver a idle
+  // Mute mic/VAD while avatar speaks — refs (efecto definido tras startMic/stopMic para evitar TDZ)
   const wasMicOnBeforeTTSRef = useRef(false);
   const isMutedForTTSRef = useRef(false);
-
-  useEffect(() => {
-    if (aiState === 'thinking-speaking' && !isMutedForTTSRef.current) {
-      if (micOn) {
-        console.log('[mic-mute] Pausing VAD/mic for TTS playback, wasMicOn:', micOn);
-        wasMicOnBeforeTTSRef.current = true;
-        isMutedForTTSRef.current = true;
-        stopMic();
-      } else {
-        wasMicOnBeforeTTSRef.current = false;
-        isMutedForTTSRef.current = true;
-      }
-    } else if (aiState === 'idle' && isMutedForTTSRef.current) {
-      const shouldResume = wasMicOnBeforeTTSRef.current && autoStartMicOnConvEndRef.current;
-      console.log('[mic-mute] Audio finished, wasMicOn:', wasMicOnBeforeTTSRef.current, 'autoStartMicOnConvEnd:', autoStartMicOnConvEndRef.current, 'shouldResume:', shouldResume);
-      isMutedForTTSRef.current = false;
-      if (shouldResume) {
-        startMic();
-      }
-      wasMicOnBeforeTTSRef.current = false;
-    }
-  }, [aiState, micOn, startMic, stopMic]);
 
   /**
    * Update previous triggered probability and force re-render
@@ -383,6 +360,29 @@ export function VADProvider({ children }: { children: React.ReactNode }) {
     setAutoStartMicOnConvEndState(value);
     forceUpdate();
   }, []);
+
+  // Mute mic/VAD while avatar speaks (aiState thinking-speaking) — cubre toda la cola, solo al volver a idle
+  useEffect(() => {
+    if (aiState === 'thinking-speaking' && !isMutedForTTSRef.current) {
+      if (micOn) {
+        console.log('[mic-mute] Pausing VAD/mic for TTS playback, wasMicOn:', micOn);
+        wasMicOnBeforeTTSRef.current = true;
+        isMutedForTTSRef.current = true;
+        stopMic();
+      } else {
+        wasMicOnBeforeTTSRef.current = false;
+        isMutedForTTSRef.current = true;
+      }
+    } else if (aiState === 'idle' && isMutedForTTSRef.current) {
+      const shouldResume = wasMicOnBeforeTTSRef.current && autoStartMicOnConvEndRef.current;
+      console.log('[mic-mute] Audio finished, wasMicOn:', wasMicOnBeforeTTSRef.current, 'autoStartMicOnConvEnd:', autoStartMicOnConvEndRef.current, 'shouldResume:', shouldResume);
+      isMutedForTTSRef.current = false;
+      if (shouldResume) {
+        startMic();
+      }
+      wasMicOnBeforeTTSRef.current = false;
+    }
+  }, [aiState, micOn, startMic, stopMic]);
 
   // Memoized context value
   const contextValue = useMemo(
