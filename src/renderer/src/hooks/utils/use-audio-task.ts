@@ -10,7 +10,6 @@ import { audioTaskQueue } from '@/utils/task-queue';
 import { audioManager } from '@/utils/audio-manager';
 import { toaster } from '@/components/ui/toaster';
 import { useWebSocket } from '@/context/websocket-context';
-import { useVAD } from '@/context/vad-context';
 import { DisplayText } from '@/services/websocket-service';
 import { useLive2DExpression } from '@/hooks/canvas/use-live2d-expression';
 import * as LAppDefine from '../../../WebSDK/src/lappdefine';
@@ -55,15 +54,6 @@ export const useAudioTask = () => {
     appendResponse,
     appendAIMessage,
   };
-
-  // VAD/mic mute durante TTS (mutear-microfono-durante-tts) — mute completo, elimina barge-in
-  const { micOn, startMic, stopMic, autoStartMicOnConvEnd } = useVAD();
-  const wasMicOnBeforeTTSRef = useRef(false);
-  const isMutedForTTSRef = useRef(false);
-  const micOnRef = useRef(micOn);
-  const autoStartMicOnConvEndRef = useRef(autoStartMicOnConvEnd);
-  useEffect(() => { micOnRef.current = micOn; }, [micOn]);
-  useEffect(() => { autoStartMicOnConvEndRef.current = autoStartMicOnConvEnd; }, [autoStartMicOnConvEnd]);
 
   /**
    * Stop current audio playback and lip sync (delegates to global audioManager)
@@ -159,32 +149,12 @@ export const useAudioTask = () => {
         // Setup audio element
         const audio = new Audio(audioDataUrl);
         
-        // Mute mic/VAD while avatar speaks (aiState thinking-speaking) — guarda estado previo
-        if (!isMutedForTTSRef.current && micOnRef.current) {
-          console.log('[mic-mute] Pausing VAD/mic for TTS playback, wasMicOn:', micOnRef.current);
-          wasMicOnBeforeTTSRef.current = true;
-          isMutedForTTSRef.current = true;
-          try { stopMic(); } catch (e) { console.warn('[mic-mute] stopMic failed', e); }
-        } else if (!isMutedForTTSRef.current) {
-          wasMicOnBeforeTTSRef.current = false;
-        }
-
         // Register with global audio manager IMMEDIATELY after creating audio
         audioManager.setCurrentAudio(audio, model);
         let isFinished = false;
 
         const cleanup = () => {
           audioManager.clearCurrentAudio(audio);
-          // Reactivar micro solo si fue muteado para TTS y no quedan audios en cola (cubre ultima oracion de la cola)
-          if (isMutedForTTSRef.current && !audioTaskQueue.hasTask() && !audioManager.hasCurrentAudio()) {
-            const shouldResume = wasMicOnBeforeTTSRef.current && autoStartMicOnConvEndRef.current;
-            console.log('[mic-mute] Audio queue empty, wasMicOn:', wasMicOnBeforeTTSRef.current, 'autoStartMicOnConvEnd:', autoStartMicOnConvEndRef.current, 'shouldResume:', shouldResume);
-            isMutedForTTSRef.current = false;
-            if (shouldResume) {
-              try { startMic(); } catch (e) { console.warn('[mic-mute] startMic failed', e); }
-            }
-            wasMicOnBeforeTTSRef.current = false;
-          }
           if (!isFinished) {
             isFinished = true;
             resolve();
