@@ -88,7 +88,7 @@ const DEFAULT_VAD_STATE = {
   micOn: false,
   autoStopMic: true,
   autoStartMicOn: false,
-  autoStartMicOnConvEnd: false,
+  autoStartMicOnConvEnd: true,
 };
 
 /**
